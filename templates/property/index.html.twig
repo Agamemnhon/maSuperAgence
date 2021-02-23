@@ -3,13 +3,19 @@
 {% block title 'Tous nos biens'%}
 
 {% block body %}
-    <style>
-
-        .example-wrapper {  width: 100%; font: 18px/1.5 sans-serif; background: whitesmoke;}
-        .example-wrapper code { background: whitesmoke ; padding: 2px 6px; }
-    </style>
-
-    <div class="example-wrapper" >
+    <div class="container mt-4">
         <h1 style="text-align: center">Voir tous nos biens</h1>
+
+        <div class="row">
+            {%  for property in properties %}
+                <div class="col-md-4">
+                    {% include 'property/_property.html.twig' %}
+                </div>
+            {%  endfor %}
+        </div>
+
+        <div class="pagination">
+            {{ knp_pagination_render(properties) }}
+        </div>
     </div>
 {% endblock %}
